@@ -1,8 +1,20 @@
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
-const myPeer = new Peer(undefined, {
-    host:'e1b601ab1a18.ngrok.io'
-})
+// const myPeer = new Peer(undefined, {
+//     host:'9e458998b0e0.ngrok.io'
+// })
+const myPeer = new Peer({
+  iceServers:[
+      {
+          urls:'stun:stun.stunprotocol.org'
+      },
+      {
+          urls:'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com'
+      }
+  ]
+});
 const myVideo = document.createElement('video')
 myVideo.muted = true
 const peers = {}
